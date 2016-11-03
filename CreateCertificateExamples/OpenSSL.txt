@@ -1,0 +1,10 @@
+#To create the merchant security public/private key pair for MobilePay, use the following OpenSSL commmands (download link: https://www.openssl.org/source/):
+
+#in your openssl install folder call the following command
+set OPENSSL_CONF=./openssl.cnf
+ 
+#Create private key (merchant.pvk) and public key (merchant.crt) pair valid for 365 days:
+openssl req -x509 -nodes -sha512 -newkey rsa:2048 -keyout merchant.pvk -out merchant.crt -days 365
+
+#Create pfx file (merchant.pfx) containing the private key. You can use this file to encrypt future requests to MobilePay after you have been onboarded:
+openssl pkcs12 -export -in merchant.crt -inkey merchant.pvk -CSP "Microsoft Enhanced RSA and AES Cryptographic Provider" -out merchant.pfx
