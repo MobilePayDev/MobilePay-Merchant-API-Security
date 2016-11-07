@@ -10,7 +10,9 @@ The overall steps involved in the onboarding process are outlined here:
 5.	Save the PublicKey value found in the response to a file (e.g. mobilepay.crt).
 6.	Navigate to Products, click to subscribe to your API product of interest e.g. "MobilePay AppSwitch" or "MobilePay Connect" and await approval by a MobilePay API Administrator. If you cannot see your product of interest, contact MobilePay and we will make sure you have the necessary rights.
 7.	Prepare [your own public key] (https://github.com/MobilePayDev/MobilePay-Merchant-API-Security/blob/master/Merchant-onboarding.md#your-own-public-key) for registration. That is, use MobilePay's public key to encrypt your public key and your AppSwitch/Connect subscription key to a file. We provide a command line encryption tool to help you create the encrypted file. See how to use the tool [below] ( https://github.com/MobilePayDev/MobilePay-Merchant-API-Security/blob/master/Merchant-onboarding.md#encryption-tool).
-8.	After you have generated the encrypted file (.enc ending) you need to send it to mp_appswitch@mobilepay.dk. In the email please add your Merchant Id (APP(DK/NO/FI)XXXXXXXXXX) and your AppSwitch primary subscription key.
+8. After you have generated the encrypted file (file with .enc ending) you need to send it to mp_appswitch@danskebank.dk. In the email please add your Merchant Id (APP(DK/NO/FI)XXXXXXXXXX) and your AppSwitch primary subscription key.
+
+Attention: If you are onboarding AppSwitch with several merchant id's, you will have to create an account and encrypted file for each of the merchant id's.
 
 ### Your own public key
 If you do not have a certificate ready to use, one option is to buy one from a trusted authority like e.g. GlobalSign or Symantec. Another option is to create and sign a certificate yourself. Please remember to never disclose the private key. The private key is contained in the .pvk and .pfx files.
