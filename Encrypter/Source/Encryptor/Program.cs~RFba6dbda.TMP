@@ -1,0 +1,33 @@
+﻿using System;
+
+namespace Encryptor
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Arg 0: Merchant Subscription key
+            // Arg 1: Merchant public key crt location
+            // Arg 2: MobilePay public key crt location
+            // Arg 3: Encrypted output file (Optional)
+
+            if (args.Length < 3)
+            {
+                Console.WriteLine("Wrong parameter count");
+                Console.WriteLine("Argument 1: Merchant Subscription Key");
+                Console.WriteLine("Argument 2: Merchant public key crt file location");
+                Console.WriteLine("Argument 3: MobilePay public key crt file location");
+                Console.WriteLine("Argument 4: Encrypted output file location (optional)");
+                return;
+            }
+
+            string outputFile = null;
+            if (args.Length == 4)
+            {
+                outputFile = args[3];
+            }
+
+            Encrypt.ToFile(args[0], args[1], args[2], outputFile);
+        }
+    }
+}

@@ -1,0 +1,2679 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.KeyVault</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.Azure.KeyVault.HttpBearerChallenge.IsBearerChallenge(System.String)">
+            <summary>
+            Tests whether an authentication header is a Bearer challenge
+            </summary>
+            <remarks>
+            This method is forgiving: if the parameter is null, or the scheme
+            in the header is missing, then it will simply return false.
+            </remarks>
+            <param name="challenge">The AuthenticationHeaderValue to test</param>
+            <returns>True if the header is a Bearer challenge</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.HttpBearerChallenge.#ctor(System.Uri,System.String)">
+            <summary>
+            Parses an HTTP WWW-Authentication Bearer challenge from a server.
+            </summary>
+            <param name="challenge">The AuthenticationHeaderValue to parse</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.HttpBearerChallenge.TryGetValue(System.String,System.String@)">
+            <summary>
+            Returns the value stored at the specified key.
+            </summary>
+            <remarks>
+            If the key does not exist, will return false and the
+            content of value will not be changed
+            </remarks>
+            <param name="key">The key to be retrieved</param>
+            <param name="value">The value for the specified key</param>
+            <returns>True when the key is found, false when it is not</returns>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.HttpBearerChallenge.AuthorizationServer">
+            <summary>
+            Returns the URI for the Authorization server if present,
+            otherwise string.Empty
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.HttpBearerChallenge.Resource">
+            <summary>
+            Returns the Realm value if present, otherwise the Authority
+            of the request URI given in the ctor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.HttpBearerChallenge.Scope">
+            <summary>
+            Returns the Scope value if present, otherwise string.Empty
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Internal.IKeyOperations">
+            <summary>
+            Cryptographic and management operations for keys in a vault
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.BackupAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Requests that a backup of the specified key be downloaded to the
+            client.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.CreateAsync(System.String,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new, named, key in the specified vault.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.DecryptDataAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Decrypts a single block of data.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.DeleteKeyAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete the specified key
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.EncryptDataAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Encrypts a single block of data.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the public portion of a key plus its attributes
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.ImportAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Imports a key into the specified vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.ListAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the keys in the vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of keys in the vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.ListVersionsAsync(System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the versions of a key
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.ListVersionsNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of versions of a key
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.RestoreAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Restores the backup key in to a vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.SignAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Creates a signature from a digest using the specified key in the
+            vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.UnwrapKeyAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Unwraps a symmetric key using the specified key in the vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.UpdateAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Updates the Key Attributes associated with the specified key
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.VerifyAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Verifies a signature using the specified key
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.IKeyOperations.WrapKeyAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Wraps a symmetric key using the specified key
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.IKeyVaultInternalClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.IKeyVaultInternalClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.IKeyVaultInternalClient.Credentials">
+            <summary>
+            Gets or sets the credential
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.IKeyVaultInternalClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.IKeyVaultInternalClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.IKeyVaultInternalClient.Keys">
+            <summary>
+            Cryptographic and management operations for keys in a vault
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.IKeyVaultInternalClient.Secrets">
+            <summary>
+            Operations for secrets in a vault
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Internal.ISecretOperations">
+            <summary>
+            Operations for secrets in a vault
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.ISecretOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete the specified secret
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.ISecretOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a secret
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.ISecretOperations.ListAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the secrets in the specified vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.ISecretOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of secrets in the specified vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.ISecretOperations.ListVersionsAsync(System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the versions of a secret in the specified vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.ISecretOperations.ListVersionsNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the versions of a secret in the specified vault
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.ISecretOperations.SetAsync(System.String,Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Sets a secret in the specified vault.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.ISecretOperations.UpdateAsync(System.String,Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Update the specified secret
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Internal.KeyOperations">
+            <summary>
+            Cryptographic and management operations for keys in a vault
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.#ctor(Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient)">
+            <summary>
+            Initializes a new instance of the KeyOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.BackupAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Requests that a backup of the specified key be downloaded to the
+            client.
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.CreateAsync(System.String,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new, named, key in the specified vault.
+            </summary>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyName'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.DecryptDataAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Decrypts a single block of data.
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.DeleteKeyAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete the specified key
+            </summary>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyName'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.EncryptDataAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Encrypts a single block of data.
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the public portion of a key plus its attributes
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.ImportAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Imports a key into the specified vault
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.ListAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the keys in the vault
+            </summary>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of keys in the vault
+            </summary>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.ListVersionsAsync(System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the versions of a key
+            </summary>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyName'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.ListVersionsNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of versions of a key
+            </summary>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.RestoreAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Restores the backup key in to a vault
+            </summary>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.SignAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Creates a signature from a digest using the specified key in the
+            vault
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.UnwrapKeyAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Unwraps a symmetric key using the specified key in the vault
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.UpdateAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Updates the Key Attributes associated with the specified key
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.VerifyAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Verifies a signature using the specified key
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperations.WrapKeyAsync(System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Wraps a symmetric key using the specified key
+            </summary>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.Backup(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String)">
+            <summary>
+            Requests that a backup of the specified key be downloaded to the
+            client.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.BackupAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String)">
+            <summary>
+            Requests that a backup of the specified key be downloaded to the
+            client.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.Create(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Creates a new, named, key in the specified vault.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyName'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.CreateAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Creates a new, named, key in the specified vault.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyName'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.DecryptData(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Decrypts a single block of data.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.DecryptDataAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Decrypts a single block of data.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.DeleteKey(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,System.String)">
+            <summary>
+            Delete the specified key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyName'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.DeleteKeyAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,System.String)">
+            <summary>
+            Delete the specified key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyName'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.EncryptData(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Encrypts a single block of data.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.EncryptDataAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Encrypts a single block of data.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.Get(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String)">
+            <summary>
+            Retrieves the public portion of a key plus its attributes
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.GetAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String)">
+            <summary>
+            Retrieves the public portion of a key plus its attributes
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.Import(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Imports a key into the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.ImportAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Imports a key into the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.List(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,System.Nullable{System.Int32})">
+            <summary>
+            List the keys in the vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.ListAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,System.Nullable{System.Int32})">
+            <summary>
+            List the keys in the vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.ListNext(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String)">
+            <summary>
+            List the next page of keys in the vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.ListNextAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String)">
+            <summary>
+            List the next page of keys in the vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.ListVersions(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            List the versions of a key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyName'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.ListVersionsAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            List the versions of a key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyName'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.ListVersionsNext(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String)">
+            <summary>
+            List the next page of versions of a key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.ListVersionsNextAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String)">
+            <summary>
+            List the next page of versions of a key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.Restore(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Restores the backup key in to a vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.RestoreAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Restores the backup key in to a vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.Sign(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Creates a signature from a digest using the specified key in the
+            vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.SignAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Creates a signature from a digest using the specified key in the
+            vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.UnwrapKey(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Unwraps a symmetric key using the specified key in the vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.UnwrapKeyAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Unwraps a symmetric key using the specified key in the vault
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.Update(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Updates the Key Attributes associated with the specified key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.UpdateAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Updates the Key Attributes associated with the specified key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.Verify(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Verifies a signature using the specified key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.VerifyAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Verifies a signature using the specified key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.WrapKey(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Wraps a symmetric key using the specified key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOperationsExtensions.WrapKeyAsync(Microsoft.Azure.KeyVault.Internal.IKeyOperations,System.String,Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent)">
+            <summary>
+            Wraps a symmetric key using the specified key
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.KeyVault.Internal.IKeyOperations.
+            </param>
+            <param name='keyIdentifier'>
+            Required.
+            </param>
+            <param name='keyOpRequest'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a key operation request.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent">
+            <summary>
+            Represents a key operation request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent.#ctor">
+            <summary>
+            Initializes a new instance of the
+            KeyOpRequestMessageWithRawJsonContent class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyOpRequestMessageWithRawJsonContent.RawJsonRequest">
+            <summary>
+            Optional.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Internal.KeyOpResponseMessageWithRawJsonContent">
+            <summary>
+            Represents the response to a key operation request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyOpResponseMessageWithRawJsonContent.#ctor">
+            <summary>
+            Initializes a new instance of the
+            KeyOpResponseMessageWithRawJsonContent class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyOpResponseMessageWithRawJsonContent.KeyOpResponse">
+            <summary>
+            Optional.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.#ctor">
+            <summary>
+            Initializes a new instance of the KeyVaultInternalClient class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.#ctor(Microsoft.Azure.KeyVault.KeyVaultCredential,System.Uri)">
+            <summary>
+            Initializes a new instance of the KeyVaultInternalClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets or sets the credential
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.#ctor(Microsoft.Azure.KeyVault.KeyVaultCredential)">
+            <summary>
+            Initializes a new instance of the KeyVaultInternalClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets or sets the credential
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the KeyVaultInternalClient class.
+            </summary>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.#ctor(Microsoft.Azure.KeyVault.KeyVaultCredential,System.Uri,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the KeyVaultInternalClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets or sets the credential
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.#ctor(Microsoft.Azure.KeyVault.KeyVaultCredential,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the KeyVaultInternalClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets or sets the credential
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.Clone(Hyak.Common.ServiceClient{Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient})">
+            <summary>
+            Clones properties from current instance to another
+            KeyVaultInternalClient instance
+            </summary>
+            <param name='client'>
+            Instance of KeyVaultInternalClient to clone to
+            </param>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.Credentials">
+            <summary>
+            Gets or sets the credential
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.Keys">
+            <summary>
+            Cryptographic and management operations for keys in a vault
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.Secrets">
+            <summary>
+            Operations for secrets in a vault
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Internal.SecretOperations">
+            <summary>
+            Operations for secrets in a vault
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperations.#ctor(Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient)">
+            <summary>
+            Initializes a new instance of the SecretOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete the specified secret
+            </summary>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a secret
+            </summary>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperations.ListAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the secrets in the specified vault
+            </summary>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of secrets in the specified vault
+            </summary>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperations.ListVersionsAsync(System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the versions of a secret in the specified vault
+            </summary>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='secretName'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperations.ListVersionsNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the versions of a secret in the specified vault
+            </summary>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperations.SetAsync(System.String,Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Sets a secret in the specified vault.
+            </summary>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <param name='request'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperations.UpdateAsync(System.String,Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent,System.Threading.CancellationToken)">
+            <summary>
+            Update the specified secret
+            </summary>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <param name='request'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.SecretOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.KeyVault.Internal.KeyVaultInternalClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.Delete(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String)">
+            <summary>
+            Delete the specified secret
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.DeleteAsync(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String)">
+            <summary>
+            Delete the specified secret
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.Get(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String)">
+            <summary>
+            Gets a secret
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.GetAsync(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String)">
+            <summary>
+            Gets a secret
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.List(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String,System.Nullable{System.Int32})">
+            <summary>
+            List the secrets in the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.ListAsync(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String,System.Nullable{System.Int32})">
+            <summary>
+            List the secrets in the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.ListNext(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String)">
+            <summary>
+            List the next page of secrets in the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.ListNextAsync(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String)">
+            <summary>
+            List the next page of secrets in the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.ListVersions(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            List the versions of a secret in the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='secretName'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.ListVersionsAsync(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            List the versions of a secret in the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='vault'>
+            Required.
+            </param>
+            <param name='secretName'>
+            Required.
+            </param>
+            <param name='top'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.ListVersionsNext(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String)">
+            <summary>
+            List the versions of a secret in the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.ListVersionsNextAsync(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String)">
+            <summary>
+            List the versions of a secret in the specified vault
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='nextLink'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.Set(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String,Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent)">
+            <summary>
+            Sets a secret in the specified vault.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <param name='request'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.SetAsync(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String,Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent)">
+            <summary>
+            Sets a secret in the specified vault.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <param name='request'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.Update(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String,Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent)">
+            <summary>
+            Update the specified secret
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <param name='request'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretOperationsExtensions.UpdateAsync(Microsoft.Azure.KeyVault.Internal.ISecretOperations,System.String,Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent)">
+            <summary>
+            Update the specified secret
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.KeyVault.Internal.ISecretOperations.
+            </param>
+            <param name='secretIdentifier'>
+            Required.
+            </param>
+            <param name='request'>
+            Required.
+            </param>
+            <returns>
+            Represents the response to a secret operation request.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent">
+            <summary>
+            Represents a secret operation request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent.#ctor">
+            <summary>
+            Initializes a new instance of the
+            SecretRequestMessageWithRawJsonContent class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.SecretRequestMessageWithRawJsonContent.RawJsonRequest">
+            <summary>
+            Optional.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Internal.SecretResponseMessageWithRawJsonContent">
+            <summary>
+            Represents the response to a secret operation request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Internal.SecretResponseMessageWithRawJsonContent.#ctor">
+            <summary>
+            Initializes a new instance of the
+            SecretResponseMessageWithRawJsonContent class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Internal.SecretResponseMessageWithRawJsonContent.Response">
+            <summary>
+            Optional.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.KeyVaultClient">
+            <summary>
+            Client class to perform cryptographic key operations and vault operations
+            against the Key Vault service. 
+            Thread safety: This class is thread-safe.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.#ctor(Microsoft.Azure.KeyVault.KeyVaultClient.AuthenticationCallback)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="authenticationCallback">The authentication callback</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.#ctor(Microsoft.Azure.KeyVault.KeyVaultClient.AuthenticationCallback,System.Net.Http.HttpClient)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="authenticationCallback">The authentication callback</param>
+            <param name="httpClient">Customized HTTP client </param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.#ctor(Microsoft.Azure.KeyVault.KeyVaultCredential,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Constructor for testability
+            </summary>
+            <param name="credential">Credential for key vault operations</param>
+            <param name="handlers">Custom HTTP handlers</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.EncryptAsync(System.String,System.String,System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Encrypts a single block of data. The amount of data that may be encrypted is determined
+            by the target key type and the encryption algorithm.
+            </summary>
+            <param name="vault">The URL of the vault</param>
+            <param name="keyName">The name of the key</param>
+            <param name="keyVersion">The version of the key (optional)</param>
+            <param name="algorithm">The algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm. </param>
+            <param name="plainText">The plain text</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>The encrypted text</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.EncryptAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Encrypts a single block of data. The amount of data that may be encrypted is determined
+            by the target key type and the encryption algorithm.
+            </summary>        
+            <param name="keyIdentifier">The full key identifier</param>
+            <param name="algorithm">The algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="plainText">The plain text</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>The encrypted text</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.DecryptAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Decrypts a single block of encrypted data
+            </summary>
+            <param name="keyIdentifier">The full key identifier</param>
+            <param name="algorithm">The algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="cipherText">The cipher text</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>The decryption result</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.SignAsync(System.String,System.String,System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Creates a signature from a digest using the specified key in the vault
+            </summary>
+            <param name="vault">The URL of the vault</param>
+            <param name="keyName">The name of the key</param>
+            <param name="keyVersion">The version of the key (optional)</param>
+            <param name="algorithm">The signing algorithm. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm. </param>
+            <param name="digest">The digest value to sign</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>The signature value</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.SignAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Creates a signature from a digest using the specified key in the vault
+            </summary>
+            <param name="keyIdentifier"> The global key identifier of the signing key </param>
+            <param name="algorithm">The signing algorithm. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm. </param>
+            <param name="digest">The digest value to sign</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>The signature value</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.VerifyAsync(System.String,System.String,System.Byte[],System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Verifies a signature using the specified key
+            </summary>
+            <param name="keyIdentifier"> The global key identifier of the key used for signing </param>
+            <param name="algorithm"> The signing/verification algorithm. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm.</param>
+            <param name="digest"> The digest used for signing </param>
+            <param name="signature"> The signature to be verified </param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns> true if the signature is verified, false otherwise. </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.WrapKeyAsync(System.String,System.String,System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Wraps a symmetric key using the specified key
+            </summary>
+            <param name="vault">The URL of the vault</param>
+            <param name="keyName">The name of the key</param>
+            <param name="keyVersion">The version of the key (optional)</param>
+            <param name="algorithm">The signing algorithm. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm. </param>
+            <param name="key"> The symmetric key </param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns> The wrapped symmetric key </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.WrapKeyAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Wraps a symmetric key using the specified key
+            </summary>
+            <param name="keyIdentifier"> The global key identifier of the key used for wrapping </param>
+            <param name="algorithm"> The wrap algorithm. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm.</param>
+            <param name="key"> The symmetric key </param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns> The wrapped symmetric key </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.UnwrapKeyAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Unwraps a symmetric key using the specified key in the vault
+                that has initially been used for wrapping the key.
+            </summary>
+            <param name="keyIdentifier"> The global key identifier of the wrapping/unwrapping key </param>
+            <param name="algorithm">The unwrap algorithm. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm.</param>
+            <param name="wrappedKey">The wrapped symmetric key</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>The unwrapped symmetric key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.CreateKeyAsync(System.String,System.String,System.String,System.Nullable{System.Int32},System.String[],Microsoft.Azure.KeyVault.KeyAttributes,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Creates a new, named, key in the specified vault.
+            </summary>
+            <param name="vault">The URL for the vault in which the key is to be created.</param>
+            <param name="keyName">The name for the key</param>
+            <param name="keyType">The type of key to create. For valid key types, see WebKeyTypes.</param>
+            <param name="keyAttributes">The attributes of the key. For more information on possible attributes, see KeyAttributes.</param>        
+            <param name="keySize">Size of the key</param>
+            <param name="key_ops">JSON web key operations. For more information, see JsonWebKeyOperation.</param>        
+            <param name="tags">Application-specific metadata in the form of key-value pairs</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A key bundle containing the result of the create request</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetKeyAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the public portion of a key plus its attributes
+            </summary>
+            <param name="vault">The vault name, e.g. https://myvault.vault.azure.net</param>
+            <param name="keyName">The key name</param>
+            <param name="keyVersion">The key version</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A KeyBundle of the key and its attributes</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetKeyAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the public portion of a key plus its attributes
+            </summary>
+            <param name="keyIdentifier">The key identifier</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A KeyBundle of the key and its attributes</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetKeysAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List keys in the specified vault
+            </summary>
+            <param name="vault">The URL for the vault containing the keys, e.g. https://myvault.vault.azure.net</param>
+            <param name="maxresults">Maximum number of keys to return</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A response message containing a list of keys in the vault along with a link to the next page of keys</returns>   
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetKeysNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of keys
+            </summary>
+            <param name="nextLink">nextLink value from a previous call to GetKeys or GetKeysNext</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetKeyVersionsAsync(System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the versions of the specified key
+            </summary>
+            <param name="vault">The URL for the vault containing the key, e.g. https://myvault.vault.azure.net</param>
+            <param name="keyName">Name of the key</param>
+            <param name="maxresults">Maximum number of keys to return</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A response message containing a list of keys along with a link to the next page of keys</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetKeyVersionsNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of key versions
+            </summary>
+            <param name="nextLink">nextLink value from a previous call to GetKeyVersions or GetKeyVersionsNext</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A response message containing a list of keys along with a link to the next page of keys</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.DeleteKeyAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the specified key
+            </summary>
+            <param name="vault">The vault name, e.g. https://myvault.vault.azure.net</param>
+            <param name="keyName">The key name</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>The public part of the deleted key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.UpdateKeyAsync(System.String,System.String,System.String[],Microsoft.Azure.KeyVault.KeyAttributes,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Updates the Key Attributes associated with the specified key
+            </summary>
+            <param name="vault">The vault name, e.g. https://myvault.vault.azure.net</param>
+            <param name="keyName">The key name</param>
+            <param name="keyOps">Json web key operations. For more information on possible key operations, see JsonWebKeyOperation.</param>
+            <param name="attributes">The new attributes for the key. For more information on key attributes, see KeyAttributes.</param>
+            <param name="tags">Application-specific metadata in the form of key-value pairs</param>
+            <returns> The updated key </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.UpdateKeyAsync(System.String,System.String[],Microsoft.Azure.KeyVault.KeyAttributes,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Updates the Key Attributes associated with the specified key
+            </summary>        
+            <param name="keyIdentifier">The key identifier</param>
+            <param name="keyOps">Json web key operations. For more information, see JsonWebKeyOperation.</param>
+            <param name="attributes">The new attributes for the key. For more information on key attributes, see KeyAttributes.</param>
+            <param name="tags">Application-specific metadata in the form of key-value pairs</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns> The updated key </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.ImportKeyAsync(System.String,System.String,Microsoft.Azure.KeyVault.KeyBundle,System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+            <summary>
+            Imports a key into the specified vault
+            </summary>
+            <param name="vault">The vault name, e.g. https://myvault.vault.azure.net</param>
+            <param name="keyName">The key name</param>
+            <param name="keyBundle"> Key bundle </param>
+            <param name="importToHardware">Whether to import as a hardware key (HSM) or software key </param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns> Imported key bundle to the vault </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.BackupKeyAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Requests that a backup of the specified key be downloaded to the client.
+            </summary>
+            <param name="vault">The vault name, e.g. https://myvault.vault.azure.net</param>
+            <param name="keyName">The key name</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>The backup blob containing the backed up key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.RestoreKeyAsync(System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Restores the backup key in to a vault 
+            </summary>
+            <param name="vault">The vault name, e.g. https://myvault.vault.azure.net</param>
+            <param name="keyBundleBackup"> the backup blob associated with a key bundle </param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns> Restored key bundle in the vault </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetSecretAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a secret.
+            </summary>
+            <param name="vault">The URL for the vault containing the secrets.</param>
+            <param name="secretName">The name the secret in the given vault.</param>
+            <param name="secretVersion">The version of the secret (optional)</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A response message containing the secret</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetSecretAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a secret.
+            </summary>
+            <param name="secretIdentifier">The URL for the secret.</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A response message containing the secret</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.SetSecretAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.String,Microsoft.Azure.KeyVault.SecretAttributes,System.Threading.CancellationToken)">
+            <summary>
+            Sets a secret in the specified vault.
+            </summary>
+            <param name="vault">The URL for the vault containing the secrets.</param>
+            <param name="secretName">The name the secret in the given vault.</param>
+            <param name="value">The value of the secret.</param>        
+            <param name="contentType">Type of the secret value such as a password. </param>
+            <param name="tags">Application-specific metadata in the form of key-value pairs</param>
+            <param name="secretAttributes">Attributes for the secret. For more information on possible attributes, see SecretAttributes.</param>     
+            <param name="cancellationToken">Optional cancellation token</param> 
+            <returns>A response message containing the updated secret</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.UpdateSecretAsync(System.String,System.String,System.String,Microsoft.Azure.KeyVault.SecretAttributes,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Updates the attributes associated with the specified secret
+            </summary>
+            <param name="vault">The vault name, e.g. https://myvault.vault.azure.net</param>
+            <param name="secretName">The name of the secret</param>
+            <param name="contentType">Type of the secret value such as password.</param>
+            <param name="tags">Application-specific metadata in the form of key-value pairs</param>
+            <param name="secretAttributes">Attributes for the secret. For more information on possible attributes, see SecretAttributes.</param>      
+            <param name="cancellationToken">Optional cancellation token</param>  
+            <returns>A response message containing the updated secret</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.UpdateSecretAsync(System.String,System.String,Microsoft.Azure.KeyVault.SecretAttributes,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Updates the attributes associated with the specified secret
+            </summary>        
+            <param name="secretIdentifier">The URL of the secret</param>
+            <param name="contentType">Type of the secret value such as password.</param>
+            <param name="tags">Application-specific metadata in the form of key-value pairs</param>
+            <param name="secretAttributes">Attributes for the secret. For more information on possible attributes, see SecretAttributes.</param>      
+            <param name="cancellationToken">Optional cancellation token</param>  
+            <returns>A response message containing the updated secret</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.DeleteSecretAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a secret from the specified vault.
+            </summary>
+            <param name="vault">The URL for the vault containing the secrets.</param>
+            <param name="secretName">The name of the secret in the given vault.</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>The deleted secret</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetSecretsAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List secrets in the specified vault
+            </summary>
+            <param name="vault">The URL for the vault containing the secrets.</param>
+            <param name="maxresults">Maximum number of secrets to return</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A response message containing a list of secrets in the vault along with a link to the next page of secrets</returns>              
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetSecretsNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of secrets
+            </summary>
+            <param name="nextLink">nextLink value from a previous call to GetSecrets or GetSecretsNext</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A response message containing a list of secrets in the vault along with a link to the next page of secrets</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetSecretVersionsAsync(System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            List the versions of a secret
+            </summary>
+            <param name="vault">The URL for the vault containing the secret</param>
+            <param name="secretName">The name of the secret</param>
+            <param name="maxresults">Maximum number of secrets to return</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A response message containing a list of secrets along with a link to the next page of secrets</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClient.GetSecretVersionsNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            List the next page of versions of a secret
+            </summary>
+            <param name="nextLink">nextLink value from a previous call to GetSecretVersions or GetSecretVersionsNext</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A response message containing a list of secrets in the vault along with a link to the next page of secrets</returns>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.KeyVaultClient.AuthenticationCallback">
+            <summary>
+            The authentication callback delegate which is to be implemented by the client code
+            </summary>
+            <param name="authority"> Identifier of the authority, a URL. </param>
+            <param name="resource"> Identifier of the target resource that is the recipient of the requested token, a URL. </param>
+            <param name="scope"> The scope of the authentication request. </param>
+            <returns> access token </returns>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.KeyVaultClientException">
+            <summary>
+            KeyVault Request Exception
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientException.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientException.#ctor(System.Net.HttpStatusCode,System.Uri,Microsoft.Azure.KeyVault.Error)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="status">The HTTP response status code</param>
+            <param name="error">The Error object returned by the service</param>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyVaultClientException.Status">
+            <summary>
+            The HTTP response status code
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyVaultClientException.Error">
+            <summary>
+            The Error object returned by the service
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyVaultClientException.RequestUri">
+            <summary>
+            The Uri that the request was made to.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.DecryptDataAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.KeyBundle,System.String,System.Byte[])">
+            <summary>
+            Decrypts a single block of encrypted data.
+            </summary>
+            <param name="keyBundle">The key to use for decryption</param>
+            <param name="algorithm">The encryption algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="cipherText">The encrypted data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.DecryptDataAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String,System.Byte[])">
+            <summary>
+            Decrypts a single block of encrypted data.
+            </summary>
+            <param name="key">The web key to use for decryption</param>
+            <param name="algorithm">The encryption algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="cipherText">The encrypted data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.EncryptDataAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.KeyBundle,System.String,System.Byte[])">
+            <summary>
+            Encrypts a single block of data. The amount of data that may be encrypted is determined
+            by the target key type and the encryption algorithm.
+            </summary>
+            <param name="keyBundle">The key bundle to use for encryption</param>
+            <param name="algorithm">The encryption algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="plaintext">The plain text to encrypt</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.EncryptDataAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String,System.Byte[])">
+            <summary>
+            Encrypts a single block of data. The amount of data that may be encrypted is determined
+            by the target key type and the encryption algorithm.
+            </summary>
+            <param name="key">The web key to use for encryption</param>
+            <param name="algorithm">The encryption algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="plaintext">The plain text to encrypt</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.SignAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.KeyBundle,System.String,System.Byte[])">
+            <summary>
+            Creates a signature from a digest using the specified key in the vault.
+            </summary>
+            <param name="keyBundle">The key bundle of the signing key </param>
+            <param name="algorithm">The signing algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="digest">The signing digest hash value </param>
+            <returns> signature </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.SignAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String,System.Byte[])">
+            <summary>
+            Creates a signature from a digest using the specified key in the vault.
+            </summary>
+            <param name="key"> The web key of the signing key </param>
+            <param name="algorithm"> The signing algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="digest"> The signing digest hash value </param>
+            <returns> signature </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.UnwrapKeyAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.KeyBundle,System.Byte[],System.String)">
+            <summary>
+            Unwraps a symmetric key using the specified wrapping key and algorithm.
+            </summary>        
+            <param name="wrappingKey">The wrapping key</param>
+            <param name="wrappedKey">The symmetric key to unwrap</param>
+            <param name="algorithm">The algorithm to use. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <returns>The unwrapped key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.UnwrapKeyAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Byte[],System.String)">
+            <summary>
+            Unwraps a symmetric key using the specified wrapping key and algorithm.
+            </summary>        
+            <param name="wrappingKey">The wrapping key</param>
+            <param name="wrappedKey">The symmetric key to unwrap</param>
+            <param name="algorithm">The algorithm to use. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <returns>The unwrapped key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.VerifyAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.KeyBundle,System.String,System.Byte[],System.Byte[])">
+            <summary>
+            Verifies a signature using the specified key.
+            </summary>        
+            <param name="verifyKey">The verification key</param>
+            <param name="algorithm">The signing algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="digest">The digest hash value</param>
+            <param name="signature">The signature to verify</param>
+            <returns>True if verification succeeds, false if verification fails</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.VerifyAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String,System.Byte[],System.Byte[])">
+            <summary>
+            Verifies a signature using the specified key.
+            </summary>        
+            <param name="verifyKey">The verification key</param>
+            <param name="algorithm">The signing algorithm. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <param name="digest">The digest hash value</param>
+            <param name="signature">The signature to verify</param>
+            <returns>true if verification succeeds, false if verification fails</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.WrapKeyAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.KeyBundle,System.Byte[],System.String)">
+            <summary>
+            Wraps a symmetric key using the specified wrapping key and algorithm.
+            </summary>        
+            <param name="wrappingKey">The wrapping key</param>
+            <param name="key">The key to wrap</param>
+            <param name="algorithm">The algorithm to use. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <returns>The wrapped key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyVaultClientExtensions.WrapKeyAsync(Microsoft.Azure.KeyVault.KeyVaultClient,Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Byte[],System.String)">
+            <summary>
+            Wraps a symmetric key using the specified wrapping key and algorithm.
+            </summary>        
+            <param name="wrappingKey">The wrapping key</param>
+            <param name="key">The key to wrap</param>
+            <param name="algorithm">The algorithm to use. For more information on possible algorithm types, see JsonWebKeyEncryptionAlgorithm.</param>
+            <returns>The wrapped key</returns>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.KeyAttributes">
+            <summary>
+            The attributes of a key managed by the KeyVault service
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyAttributes.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+            <remarks>
+            The defauts for the properties are:
+            Enabled   = null
+            NotBefore = null
+            Expires   = null
+            Created   = null
+            Updated   = null
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyAttributes._notBeforeUnixTime">
+            <summary>
+            NotBefore date as the number of seconds since the Unix Epoch (1/1/1970)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyAttributes._expiresUnixTime">
+            <summary>
+            Expiry date as the number of seconds since the Unix Epoch (1/1/1970)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyAttributes._createdUnixTime">
+            <summary>
+            Creation time as the number of seconds since the Unix Epoch (1/1/1970)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyAttributes._updatedUnixTime">
+            <summary>
+            Last updated time as the number of seconds since the Unix Epoch (1/1/1970)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyAttributes.Enabled">
+            <summary>
+            Determines whether the key is enabled
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyAttributes.NotBefore">
+            <summary>
+            Not before date in UTC
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyAttributes.Expires">
+            <summary>
+            Expiry date in UTC
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyAttributes.Created">
+            <summary>
+            Creation time in UTC
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyAttributes.Updated">
+            <summary>
+            Last updated time in UTC
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.KeyBundle">
+            <summary>
+            A KeyBundle consisting of a WebKey plus its Attributes
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.KeyBundle.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyBundle.Key">
+            <summary>
+            The Json web key 
+            </summary>        
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyBundle.Attributes">
+            <summary>
+            The key management attributes
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.KeyBundle.Tags">
+            <summary>
+            The tags for the secret
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Secret">
+            <summary>
+            A Secret consisting of a value and id.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.Secret._id">
+            <summary>
+            The secret id
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.Secret.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Secret.Value">
+            <summary>
+            The secret value 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Secret.ContentType">
+            <summary>
+            The content type of the secret
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Secret.Attributes">
+            <summary>
+            The secret management attributes
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Secret.Tags">
+            <summary>
+            The tags for the secret
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.Secret.SecretIdentifier">
+            <summary>
+            Identifier of the secret 
+            </summary>        
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.SecretAttributes">
+            <summary>
+            The attributes of a secret managed by the KeyVault service
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.SecretAttributes.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+            <remarks>
+            The defauts for the properties are:
+            Enabled   = null
+            NotBefore = null
+            Expires   = null
+            Created   = null
+            Updated   = null
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.SecretAttributes._notBeforeUnixTime">
+            <summary>
+            NotBefore date as the number of seconds since the Unix Epoch (1/1/1970)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.SecretAttributes._expiresUnixTime">
+            <summary>
+            Expiry date as the number of seconds since the Unix Epoch (1/1/1970)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.SecretAttributes._createdUnixTime">
+            <summary>
+            Creation time as the number of seconds since the Unix Epoch (1/1/1970)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.SecretAttributes._updatedUnixTime">
+            <summary>
+            Last updated time as the number of seconds since the Unix Epoch (1/1/1970)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.SecretAttributes.Enabled">
+            <summary>
+            Determines whether the key is enabled
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.SecretAttributes.NotBefore">
+            <summary>
+            Not before date in UTC
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.SecretAttributes.Expires">
+            <summary>
+            Expiry date in UTC
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.SecretAttributes.Created">
+            <summary>
+            Creation time in UTC
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.SecretAttributes.Updated">
+            <summary>
+            Last updated time in UTC
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.ObjectIdentifier.BaseIdentifier">
+            <summary>
+            The base identifier for an object, does not include the object version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.ObjectIdentifier.Identifier">
+            <summary>
+            The identifier for an object, includes the objects version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.ObjectIdentifier.Name">
+            <summary>
+            The name of the object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.ObjectIdentifier.Vault">
+            <summary>
+            The vault containing the object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.ObjectIdentifier.Version">
+            <summary>
+            The version of the object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.UnixEpoch.FromUnixTime(System.Int64)">
+            <summary>
+            Convert the number of seconds since midnight (UTC) on 1st January 1970 to date
+            </summary>
+            <param name="seconds">The number of seconds since midnight (UTC) on 1st January 1970</param>
+            <returns>The date in UTC form</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.UnixEpoch.Now">
+            <summary>
+            Gets the current time as the number of seconds since midnight (UTC) on 1st January 1970
+            </summary>
+            <returns>The number of seconds since midnight (UTC) on 1st January 1970</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.UnixEpoch.ToUnixTime(System.DateTime)">
+            <summary>
+            Returns the number of seconds after Unix Epoch (January 1 1970 00:00:00 GMT, until the given time).
+            </summary>
+            <param name="dateTime">The date, in UTC form.</param>
+            <returns>Number of seconds from January 1 1970.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.UriExtensions.FullAuthority(System.Uri)">
+            <summary>
+            Returns an authority string for URI that is guaranteed to contain
+            a port number.
+            </summary>
+            <param name="uri">The Uri from which to compute the authority</param>
+            <returns>The complete authority for the Uri</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.UriExtensions.UrlFormEncode(System.String)">
+            <summary>
+            x-www-form-urlencoded a string without the requirement for System.Web
+            </summary>
+            <param name="text">The string to encode</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.UriExtensions.UrlFormDecode(System.String)">
+            <summary>
+            UrlDecodes a string without requiring System.Web
+            </summary>
+            <param name="text">String to decode.</param>
+            <returns>decoded string</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.IsValid">
+            <summary>
+            Determines if the WebKey object is valid according to the rules for
+            each of the possible WebKeyTypes. For more information, see WebKeyTypes.
+            </summary>
+            <returns>true if the WebKey is valid</returns>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Kid">
+            <summary>
+            Key Identifier
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Kty">
+            <summary>
+            Key type, usually RSA
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.KeyOps">
+            <summary>
+            Supported Key Operations
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyEncryptionAlgorithm">
+            <summary>
+            Supported JsonWebKey algorithms
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyEncryptionAlgorithm.AllAlgorithms">
+            <summary>
+            All algorithms names. Use clone to avoid FxCop violation
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyOperation">
+            <summary>
+            Supported JsonWebKey operations
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyOperation.AllOperations">
+            <summary>
+            All operations names. Use clone to avoid FxCop violation
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeySignatureAlgorithm">
+            <summary>
+            Supported JsonWebKey algorithms
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeySignatureAlgorithm.AllAlgorithms">
+            <summary>
+            All algorithms names. Use clone to avoid FxCop violation
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyType">
+            <summary>
+            Supported JsonWebKey key types (kty)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyType.AllTypes">
+            <summary>
+            All types names. Use clone to avoid FxCop violation
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.Json.Base64UrlConverter.ToBase64UrlString(System.Byte[])">
+            <summary>
+            Converts a byte array to a Base64Url encoded string
+            </summary>
+            <param name="input">The byte array to convert</param>
+            <returns>The Base64Url encoded form of the input</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.Json.Base64UrlConverter.FromBase64UrlString(System.String)">
+            <summary>
+            Converts a Base64Url encoded string to a byte array
+            </summary>
+            <param name="input">The Base64Url encoded string</param>
+            <returns>The byte array represented by the enconded string</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.Json.Base64UrlConverter.Pad(System.String)">
+            <summary>
+            Adds padding to the input
+            </summary>
+            <param name="input"> the input string </param>
+            <returns> the padded string </returns>
+        </member>
+    </members>
+</doc>
