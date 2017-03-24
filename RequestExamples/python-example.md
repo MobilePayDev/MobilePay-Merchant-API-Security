@@ -20,4 +20,4 @@ The jose package is from https://pypi.python.org/pypi/python-jose.
     payload_base64 = base64.b64encode(payload_sha1)
     
     payload_signed = jws.sign(payload_base64, privatekey, algorithm='RS256')
-    logging.info(signed)
+    print(payload_signed)
