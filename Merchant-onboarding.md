@@ -4,7 +4,7 @@ This page offers a step by step guide on how to get onboarded as a user of one o
 The overall steps involved in the onboarding process are outlined here:
 
 1.	Sign up to the MobilePay API on the developer portal [here](https://developer.mobeco.dk)
-2.	Login and navigate to Products and click to subscribe to "MobilePay Security" product.
+2.	Login and navigate to Products and click to subscribe to "Merchant Security" product.
 3.	Navigate to APIS and select the Merchant Security API
 4.	Under the "Public key" endpoint press "Try it" and "Send" to receive the public key.
 5.	Save the PublicKey value found in the response to a file (e.g. mobilepay.crt).
