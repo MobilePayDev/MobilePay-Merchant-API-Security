@@ -21,3 +21,4 @@ Below you can find examples of how to create the signed payload used in the Auth
 
 * [.Net](RequestExamples/dotnet-example.md)
 * [Python](RequestExamples/python-example.md)
+* [Java](RequestExamples/java-example.md)
