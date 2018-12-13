@@ -3,7 +3,6 @@
 ### Constructing a request to AppSwitch/Connect
 In order to correctly identify and authenticate your call to the MobilePay API, two headers must be added to the Httprequest:
 * Your merchant subscription key ("Ocp-Apim-Subscription-Key")
-    NOTE: Please check if subscription key is the same as in encrypted file!
 * Your signature ("AuthenticationSignature")
 
 Your merchant subscription key was obtained when you subscribed to the requested API at https://developer.mobeco.dk 
