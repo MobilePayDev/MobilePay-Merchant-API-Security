@@ -10,7 +10,7 @@ The overall steps involved in the onboarding process are outlined here:
 5.	Save the PublicKey value found in the response to a file (e.g. mobilepay.crt).
 6.	Navigate to Products, click to subscribe to your API product of interest e.g. "MobilePay AppSwitch" or "MobilePay Connect" and await approval by a MobilePay API Administrator. If you cannot see your product of interest, contact MobilePay and we will make sure you have the necessary rights.
 7.	Prepare [your own public key] (https://github.com/MobilePayDev/MobilePay-Merchant-API-Security/blob/master/Merchant-onboarding.md#your-own-public-key) for registration.
-8.	Send your public key certificate in a zip-file to developer@mobilepay.dk. Please include your MobilePay API e-mail, merchant id (APP(DK/FI)XXXXXXXXXX), AppSwitch primary subscription key and your own certificate's expiration date*.
+8.	Send your public key certificate in a txt-file to developer@mobilepay.dk since a crt-file can be rejected by the mailserver. Please include your MobilePay API e-mail, merchant id (APP(DK/FI)XXXXXXXXXX), AppSwitch primary subscription key and your own certificate's expiration date*.
 
 *You can find certificates expiration date by double clicking the created certificate and in the bottom of opened window you can find validation dates.
 
