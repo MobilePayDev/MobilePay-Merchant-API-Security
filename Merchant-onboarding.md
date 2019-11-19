@@ -11,7 +11,7 @@ The overall steps involved in the onboarding process are outlined here:
 
 *You can find certificates expiration date by double clicking the created certificate and in the bottom of opened window you can find validation dates.
 
-Attention: Please do not call "MobilePay AppSwich" or "Connect" endpoints from https://developer.mobeco.dk site. Calling endpoints within the site will result in "401 Unauthorized" response. 
+Attention: Please do not call "MobilePay AppSwitch" or "Connect" endpoints from https://developer.mobeco.dk site. Calling endpoints within the site will result in "401 Unauthorized" response. 
 
 Attention: If you are onboarding with several merchant id's, you will have to create an account and encrypted file for each of the merchant id's.
 
