@@ -7,7 +7,7 @@ In order to correctly identify and authenticate your call to the MobilePay API, 
 
 Your merchant subscription key was obtained when you subscribed to the requested API at https://developer.mobeco.dk 
 
-The signature format must be of the type JWS (JSON Web Signature) which is specified [here](https://developer.pingidentity.com/en/resources/jwt-and-jose.html#jwt).
+The signature format must be of the type JWS (JSON Web Signature) which is specified [here](https://www.pingidentity.com/developer/en/resources/jwt-and-jose.html).
 
 The JWS payload used to construct the token must be:
 
